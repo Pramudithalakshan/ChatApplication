@@ -9,15 +9,20 @@ import view.Display;
  */
 public class MessageControl{
     private ArrayList<Display> UsersArray = new ArrayList<>();
-    private String message;
+
 
     public void addsender(Display sender) {
         UsersArray.add(sender);
     }
 
-    public void sendMessage(String message, Display senders) {
+    public void sendMessage(String message, Display senders,String senderName) {
         for (Display d : UsersArray) {
-            d.update(senders.getName()+" : "+message);
+           String name = d.senderName;
+           if(senderName.equals(name)){
+              d.update("Me"+" : "+message);
+           }else{
+              d.update(senderName+"  :  "+message);
+           }
         }
     }
     

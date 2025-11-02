@@ -98,7 +98,7 @@ public class AddNewSender extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSenderNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenderNameActionPerformed
-        new Display(txtSenderName.getText(),this.mc).setVisible(true);
+        new Display(txtSenderName.getText(),this.mc).setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_txtSenderNameActionPerformed
 

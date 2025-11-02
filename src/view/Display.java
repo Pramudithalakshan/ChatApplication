@@ -11,30 +11,38 @@ import model.Sender;
  *
  * @author pramuditha-lakshan
  */
-public class Display extends javax.swing.JFrame implements Sender{
-   private String senderName;
-   private MessageControl mc;
+public class Display extends javax.swing.JFrame implements Sender {
+
+    public String senderName;
+    private MessageControl mc;
+
     /**
      * Creates new form Display
      */
-    public Display(String senderName,MessageControl mc) {
+    public Display(String senderName, MessageControl mc) {
         initComponents();
+        mc.addsender(this);
         lblSenderName.setText(senderName);
-        this.senderName=senderName;
-        this.mc=mc;
- 
+        this.senderName = senderName;
+        this.mc = mc;
+
     }
-      @Override
-    public void update(String message) {
-          System.out.println("Update called for");
-          txtArea.append(message+"\n");
-     } 
 
     @Override
-    public String getName() {
-      return senderName;
+    public void update(String message) {
+        txtArea.append(message + "\n");
     }
-    
+
+    /**
+     *
+     * @param sender
+     * @return
+     */
+    @Override
+    public String getName() {
+         return senderName;   
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,9 +83,9 @@ public class Display extends javax.swing.JFrame implements Sender{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblSenderName, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(230, 230, 230)
+                .addGap(253, 253, 253)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +109,7 @@ public class Display extends javax.swing.JFrame implements Sender{
         });
 
         txtArea.setColumns(20);
+        txtArea.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         txtArea.setRows(5);
         jScrollPane2.setViewportView(txtArea);
 
@@ -108,16 +117,16 @@ public class Display extends javax.swing.JFrame implements Sender{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtMessageField, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(txtMessageField, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,20 +142,20 @@ public class Display extends javax.swing.JFrame implements Sender{
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new AddNewSender(this.mc).setVisible(true);
-         
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         String message = txtMessageField.getText();
-         mc.sendMessage(message,this);
-         txtMessageField.setText("");
+        String message = txtMessageField.getText();
+        mc.sendMessage(message, this, senderName);
+        txtMessageField.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -158,5 +167,4 @@ public class Display extends javax.swing.JFrame implements Sender{
     private javax.swing.JTextField txtMessageField;
     // End of variables declaration//GEN-END:variables
 
-  
 }

@@ -4,6 +4,8 @@
  */
 package model;
 
+import view.Display;
+
 /**
  *
  * @author pramuditha-lakshan
