@@ -4,17 +4,20 @@
  */
 package view;
 
+import controller.MessageControl;
+
 /**
  *
  * @author pramuditha-lakshan
  */
 public class AddNewSender extends javax.swing.JFrame {
-
+    private MessageControl mc;
     /**
-     * Creates new form AddNewSender
+     * Creates new form AddNewSender2
      */
-    public AddNewSender() {
+    public AddNewSender(MessageControl mc) {
         initComponents();
+        this.mc=mc;
     }
 
     /**
@@ -31,7 +34,7 @@ public class AddNewSender extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtSenderName = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -87,7 +90,7 @@ public class AddNewSender extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtSenderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 74, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,15 +98,11 @@ public class AddNewSender extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSenderNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenderNameActionPerformed
-        new Display(txtSenderName.getText()).setVisible(true);
+        new Display(txtSenderName.getText(),this.mc).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_txtSenderNameActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
- 
-
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

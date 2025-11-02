@@ -8,6 +8,7 @@ package model;
  *
  * @author pramuditha-lakshan
  */
-public class NewSender {
-   
+public interface Sender {
+    void update(String message);
+    String getName();
 }
